@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Amma 💛</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(to bottom right,#fff7f0,#ffe9f0);
+overflow-y:auto;
+overflow-x:hidden;
+color:#333;
+position:relative;
+}
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(#ffd6e7 2px,transparent 2px),
+radial-gradient(#ffe7f0 2px,transparent 2px);
+background-size:60px 60px;
+opacity:0.4;
+z-index:-1;
+}
+
+.page{
+width:100%;
+min-height:100vh;
+display:none;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+text-align:center;
+animation:fade 1s ease;
+overflow-y:auto;
+}
+
+.active{
+display:flex;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0px);
+}
+}
+
+h1{
+font-size:4rem;
+color:#d45d79;
+margin-bottom:20px;
+}
+
+h2{
+font-size:3rem;
+color:#d45d79;
+margin-bottom:25px;
+}
+
+p{
+font-size:1.2rem;
+line-height:1.9;
+max-width:850px;
+}
+
+.hero-img{
+width:300px;
+height:300px;
+object-fit:cover;
+border-radius:30px;
+margin-top:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+button{
+margin-top:35px;
+padding:15px 40px;
+border:none;
+background:#d45d79;
+color:white;
+border-radius:50px;
+font-size:1rem;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 8px 20px rgba(212,93,121,0.3);
+}
+
+button:hover{
+transform:translateY(-5px);
+}
+
+.memory-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+width:100%;
+margin-top:40px;
+}
+
+.memory-card{
+background:white;
+padding:35px 20px;
+border-radius:25px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+cursor:pointer;
+transition:0.3s;
+}
+
+.memory-card:hover{
+transform:translateY(-6px);
+}
+
+.memory-card h3{
+color:#d45d79;
+margin-bottom:10px;
+font-size:1.5rem;
+}
+
+.letter{
+background:white;
+padding:50px;
+border-radius:30px;
+max-width:900px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+line-height:2.2;
+font-size:1.1rem;
+margin-top:20px;
+}
+
+.popup{
+display:none;
+position:fixed;
+z-index:1000;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+padding:20px;
+overflow:auto;
+}
+
+.popup-content{
+background:white;
+width:90%;
+max-width:500px;
+margin:5px auto;
+padding:25px;
+border-radius:30px;
+text-align:center;
+position:relative;
+animation:popupAnim 0.4s ease;
+}
+
+.popup-content img{
+width:100%;
+border-radius:25px;
+margin-bottom:20px;
+max-height:450px;
+object-fit:cover;
+}
+
+.close{
+position:absolute;
+right:20px;
+top:10px;
+font-size:35px;
+cursor:pointer;
+color:#d45d79;
+}
+
+@keyframes popupAnim{
+from{
+opacity:0;
+transform:scale(0.7);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.floating-hearts{
+position:fixed;
+bottom:20px;
+right:20px;
+font-size:2rem;
+animation:floatHearts 4s ease-in-out infinite;
+opacity:0.8;
+}
+
+@keyframes floatHearts{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0px);}
+}
+
+audio{
+display:none;
+}
+
+.photo-wall{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+width:100%;
+padding:20px;
+}
+
+.photo-card{
+background:white;
+padding:12px;
+border-radius:25px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.photo-card:hover{
+transform:translateY(-8px) scale(1.02);
+}
+
+.photo-card img{
+width:100%;
+height:280px;
+object-fit:cover;
+border-radius:20px;
+}
+
+.photo-card p{
+margin-top:12px;
+font-size:1rem;
+font-weight:600;
+color:#666;
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:2.5rem;
+}
+
+h2{
+font-size:2.2rem;
+}
+
+.hero-img{
+width:220px;
+height:220px;
+}
+
+.letter{
+padding:25px;
+}
+}
+
+/* MOBILE RESPONSIVE */
+@media screen and (max-width: 768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    h1{
+        font-size:2.2rem !important;
+        line-height:1.3;
+        padding:0 15px;
+    }
+
+    .message{
+        font-size:1rem !important;
+        padding:0 20px;
+        line-height:1.8;
+    }
+
+    .container{
+        padding:20px 15px !important;
+    }
+
+    .open-card{
+        width:90% !important;
+        padding:20px !important;
+        margin:auto;
+    }
+
+    .popup-content{
+        width:88% !important;
+        max-width:350px;
+        padding:18px !important;
+        margin:auto;
+        border-radius:25px;
+    }
+
+    .popup-content img{
+        width:100%;
+        max-height:320px;
+        object-fit:cover;
+        border-radius:20px;
+    }
+
+    .popup-text{
+        font-size:1.05rem !important;
+        line-height:1.8;
+        margin-top:15px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr !important;
+        gap:14px;
+        padding:10px;
+    }
+
+    .photo-card{
+        width:100% !important;
+        border-radius:22px;
+    }
+
+    .photo-card img{
+        height:220px !important;
+        object-fit:cover;
+        border-radius:18px;
+    }
+
+    .photo-caption{
+        font-size:0.95rem !important;
+        padding:10px;
+        line-height:1.5;
+    }
+
+    .letter-box{
+        width:90% !important;
+        padding:25px 20px !important;
+        line-height:2;
+    }
+
+    .footer-text{
+        font-size:0.95rem !important;
+        padding:0 20px;
+        line-height:1.7;
+    }
+
+    .floating-emojis{
+        font-size:1.5rem !important;
+        right:10px;
+        bottom:10px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="bgmusic" autoplay loop>
+<source src="precious-memories(chosic.com).mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+
+<section class="page active" id="page1">
+
+<h1>Happy Mother's Day Mummy ❤️❤️</h1>
+
+<p>
+No matter how far you are, your love still feels like home.
+This little website is only for the most beautiful woman in my life.
+</p>
+
+<img src="selfie.jpg" class="hero-img">
+
+<button onclick="nextPage(2)">
+Open Your Surprise 💌
+</button>
+
+</section>
+
+<!-- PAGE 2 -->
+
+<section class="page" id="page2">
+
+<h2>Hidden Memories Just For You 🌸</h2>
+
+<div class="memory-grid">
+
+<div class="memory-card" onclick="openPopup('popup1')">
+<h3>💌 See What's Inside</h3>
+<p>One memory full of love...</p>
+</div>
+
+<div class="memory-card" onclick="openPopup('popup2')">
+<h3>🌷 Open This</h3>
+<p>A moment I’ll always treasure...</p>
+</div>
+
+<div class="memory-card" onclick="openPopup('popup3')">
+<h3>🥺 Click Me Mummy</h3>
+<p>Something warm from my childhood...</p>
+</div>
+
+</div>
+
+<button onclick="nextPage(3)">Next 💖</button>
+
+</section>
+
+<!-- PAGE 3 -->
+
+<section class="page" id="page3">
+
+<h2>A Cute Letter For You 💌</h2>
+
+<div class="letter">
+
+Oiiiii Mummyyyyy ❤️
+
+<br><br>
+
+Thank you for loving me in every version of myself.
+Thank you for being strong even on the days you were tired.
+Every good thing in me began with you.
+
+<br><br>
+
+Even when you are far away,
+your love reaches me every single day.
+I may grow older,
+but I will always remain your little girl.
+
+<br><br>
+
+I hope one day I can give you even half the happiness
+you gave me all these years.
+
+<br><br>
+
+Happy Mother's Day Mummy ❤️❤️❤️
+
+<br><br>
+
+In every lifetime,
+I would still choose you as my mother 🥺💖
+
+<br><br>
+
+— Your Guddu 🌷
+
+</div>
+
+<button onclick="nextPage(4)">Next 💌</button>
+
+</section>
+
+<!-- PAGE 4 -->
+
+<section class="page" id="page4">
+
+<h2>Open When You Miss Me 🥺</h2>
+
+<div class="memory-card" onclick="openPopup('misspopup')" style="max-width:700px;width:100%;">
+<h3>💌 Open This Whenever You Miss Me</h3>
+<p>A little piece of my heart is waiting inside...</p>
+</div>
+
+<button onclick="nextPage(5)">One Last Thing ❤️</button>
+
+<br>
+
+<p style="margin-top:40px;">
+Thank you for being my first home ❤️
+</p>
+
+<div style="margin-top:60px;">
+Made with endless love by Bhoomi ❤️
+</div>
+
+</section>
+
+<!-- PAGE 5 -->
+
+<section class="page" id="page5" style="justify-content:flex-start;padding-top:40px;overflow-y:auto;">
+
+<h2>Our Forever Moments 📸</h2>
+
+<p style="margin-bottom:40px;">
+Some memories are too beautiful to stay inside a phone gallery only ✨
+</p>
+
+<div class="photo-wall" id="photoWall"></div>
+
+<div class="letter" style="margin-top:60px;max-width:950px;">
+
+Some people grow up and slowly move away from home.
+
+<br><br>
+
+But no matter how much life changes,
+I think a part of me will always search for you first.
+
+<br><br>
+
+Not because I am still a child,
+but because your love became the safest thing
+I have ever known.
+
+<br><br>
+
+Even years from now,
+even after all the growing up,
+all the changes life brings —
+
+a part of me will still look for you
+the same way a little girl looks for her mother in a crowd.
+
+<br><br>
+
+And maybe that’s what home truly means 😘
+
+<br><br>
+
+— Your Guddu 🌷
+
+</div>
+
+</section>
+
+<!-- POPUPS -->
+
+<div id="popup1" class="popup">
+<div class="popup-content">
+<span class="close" onclick="closePopup('popup1')">&times;</span>
+<img src="funny.jpg">
+<p>
+The hands that protected me before I even knew how to protect myself 💛
+</p>
+</div>
+</div>
+
+<div id="popup2" class="popup">
+<div class="popup-content">
+<span class="close" onclick="closePopup('popup2')">&times;</span>
+<img src="selfie.jpg">
+<p>
+No matter where life takes me,
+you will always be my safest place 🌸
+</p>
+</div>
+</div>
+
+<div id="popup3" class="popup">
+<div class="popup-content">
+<span class="close" onclick="closePopup('popup3')">&times;</span>
+<img src="childhood.jpg">
+<p>
+Every childhood memory became beautiful because you were in it 🥺
+</p>
+</div>
+</div>
+
+<div id="misspopup" class="popup">
+<div class="popup-content" style="margin-top:-40px;">
+<span class="close" onclick="closePopup('misspopup')">&times;</span>
+<img src="childhood.jpg">
+
+<p>
+
+Momsssss…
+no matter how far life takes me,
+I will always remain your little girl 🥺❤️
+
+<br><br>
+
+If someday you miss me badly,
+just remember that every heartbeat of mine
+carries your love inside it.
+
+<br><br>
+
+Home will always be YOU 🌸
+
+</p>
+
+</div>
+</div>
+
+<div class="floating-hearts">
+💖 💕 🌸 ✨
+</div>
+
+<script>
+
+const music = document.getElementById("bgmusic");
+
+function nextPage(pageNumber){
+
+document.querySelectorAll(".page").forEach(page=>{
+page.classList.remove("active");
+});
+
+document.getElementById("page"+pageNumber).classList.add("active");
+
+music.play();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+}
+
+function openPopup(id){
+document.getElementById(id).style.display="block";
+}
+
+function closePopup(id){
+document.getElementById(id).style.display="none";
+}
+
+window.onclick=function(event){
+
+let popups=document.getElementsByClassName("popup");
+
+for(let i=0;i<popups.length;i++){
+
+if(event.target==popups[i]){
+popups[i].style.display="none";
+}
+
+}
+
+}
+
+const captions = [
+
+"my safest place 🌸",
+"always my home 💛",
+"pure happiness 🫶",
+"forever us ✨",
+"my comfort person 🤍",
+"softest memories 🌷",
+"home feels like you 💖",
+"little moments ✨",
+"made of love 💛",
+"you are peace 🌸",
+"my beautiful world 💕",
+"safe forever 🤍",
+"my favorite soul 🌷",
+"pure warmth ✨",
+"golden memories 💛",
+"all my softness 🌸",
+"my forever blessing 💖",
+"sunshine hugs ☀️",
+"the purest love 🤍",
+"you raised my heart 🌷",
+"forever your child 💕",
+"my whole world ✨",
+"where love lives 💛",
+"safe in your love 🌸",
+"my heart smiles here 💖",
+"love without conditions 🤍",
+"warmest hugs 🌷",
+"everything good began here ✨",
+"my roots 💛",
+"my first home 🌸",
+"held with love 💖",
+"love shaped me 🤍",
+"forever grateful 🌷",
+"my forever person ✨"
+
+];
+
+const photos = [];
+
+for(let i = 1; i <= 84; i++){
+photos.push(`Photo (${i}).jpeg`);
+}
+const wall = document.getElementById("photoWall");
+
+photos.forEach((photo,index)=>{
+
+const card = document.createElement("div");
+
+card.className = "photo-card";
+
+card.innerHTML = `
+<img src="${photo}">
+<p>${captions[index % captions.length]}</p>
+`;
+
+wall.appendChild(card);
+
+});
+
+</script>
+
+</body>
+</html>
